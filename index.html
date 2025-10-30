@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuTraze - Premium Cleaning Solutions</title>
+    <meta name="description" content="NeuTraze offers premium floor and glass cleaning solutions for home and commercial use. Experience our innovative products today.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧼</text></svg>">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Brand Colors */
+            --primary-color: #3a86ff;
+            --secondary-color: #8338ec;
+            --accent-color: #ff006e;
+            --success-color: #06d6a0;
+            
+            /* Theme Variables - Default: Liquid Light */
+            --bg-primary: rgba(255, 255, 255, 0.7);
+            --bg-secondary: rgba(255, 255, 255, 0.5);
+            --bg-tertiary: rgba(255, 255, 255, 0.3);
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6a6a6a;
+            --glass-intensity: 10px;
+            --glass-tint: rgba(255, 255, 255, 0.2);
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --theme-transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Theme: Liquid Dark */
+        [data-theme="liquid-dark"] {
+            --bg-primary: rgba(20, 20, 30, 0.7);
+            --bg-secondary: rgba(30, 30, 40, 0.5);
+            --bg-tertiary: rgba(40, 40, 50, 0.3);
+            --text-primary: #f0f0f0;
+            --text-secondary: #d0d0d0;
+            --text-tertiary: #b0b0b0;
+            --glass-intensity: 12px;
+            --glass-tint: rgba(0, 10, 30, 0.3);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Theme: Vibrant Gradient */
+        [data-theme="vibrant-gradient"] {
+            --bg-primary: rgba(255, 255, 255, 0.6);
+            --bg-secondary: rgba(255, 255, 255, 0.4);
+            --bg-tertiary: rgba(255, 255, 255, 0.2);
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6a6a6a;
+            --glass-intensity: 8px;
+            --glass-tint: rgba(255, 255, 255, 0.15);
+            --shadow-color: rgba(0, 0, 0, 0.15);
+        }
+
+        /* Theme: Minimal Clean */
+        [data-theme="minimal-clean"] {
+            --bg-primary: rgba(255, 255, 255, 0.95);
+            --bg-secondary: rgba(255, 255, 255, 0.9);
+            --bg-tertiary: rgba(255, 255, 255, 0.85);
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6a6a6a;
+            --glass-intensity: 4px;
+            --glass-tint: rgba(255, 255, 255, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.05);
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--theme-transition);
+        }
+
+        /* Glass Effect Base */
+        .glass {
+            background: var(--bg-primary);
+            backdrop-filter: blur(var(--glass-intensity));
+            -webkit-backdrop-filter: blur(var(--glass-intensity));
+            border: 1px solid var(--glass-tint);
+            box-shadow: 0 8px 32px 0 var(--shadow-color);
+            transition: var(--theme-transition);
+        }
+
+        .glass-secondary {
+            background: var(--bg-secondary);
+        }
+
+        .glass-tertiary {
+            background: var(--bg-tertiary);
+        }
+
+        /* Accessibility - Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+            
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 1000;
+            text-decoration: none;
+            border-radius: 0 0 4px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 2rem;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            font-size: 1.75rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: relative;
+            width: 60px;
+            height: 30px;
+            border-radius: 15px;
+            background: var(--bg-secondary);
+            border: 1px solid var(--glass-tint);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            transition: var(--theme-transition);
+        }
+
+        .theme-toggle::before {
+            content: '';
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="liquid-dark"] .theme-toggle::before {
+            transform: translateX(30px);
+        }
+
+        .theme-toggle-icons {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            z-index: 1;
+        }
+
+        .theme-toggle-icons span {
+            font-size: 14px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.7;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 3rem 2rem;
+            border-radius: 24px;
+            margin-top: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 1px solid var(--glass-tint);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            border-radius: 16px;
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            background: var(--bg-tertiary);
+            padding: 1rem;
+        }
+
+        .product-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .product-actions .btn {
+            flex: 1;
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+        }
+
+        .about-image {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 400px;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--glass-tint);
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-check-input {
+            margin-top: 0.25rem;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 2rem 1.5rem;
+            border-top: 1px solid var(--glass-tint);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--glass-tint);
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+        }
+
+        /* Modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        /* Product Detail */
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .product-gallery {
+            border-radius: 16px;
+            overflow: hidden;
+            height: 400px;
+            background: var(--bg-tertiary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-gallery img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-detail-info h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-detail-price {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-detail-description {
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .quantity-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .quantity-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            min-width: 30px;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-buttons .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .product-detail {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            section {
+                padding: 3rem 1rem;
+            }
+            
+            .hero {
+                padding: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading State */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Success Message */
+        .success-message {
+            background: var(--success-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Fallback for browsers without backdrop-filter */
+        @supports not (backdrop-filter: blur(10px)) {
+            .glass {
+                background: rgba(255, 255, 255, 0.9);
+            }
+            
+            [data-theme="liquid-dark"] .glass {
+                background: rgba(20, 20, 30, 0.9);
+            }
+            
+            [data-theme="vibrant-gradient"] .glass {
+                background: rgba(255, 255, 255, 0.85);
+            }
+            
+            [data-theme="minimal-clean"] .glass {
+                background: rgba(255, 255, 255, 0.95);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar glass">
+            <a href="#" class="logo">
+                <span class="logo-icon">🧼</span>
+                <span>NeuTraze</span>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="theme-toggle" id="theme-toggle" role="button" aria-label="Toggle theme" tabindex="0">
+                    <div class="theme-toggle-icons">
+                        <span>☀️</span>
+                        <span>🌙</span>
+                    </div>
+                </div>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-background" id="hero-background"></div>
+            <div class="hero-content glass">
+                <h1 class="fade-in">Premium Cleaning Solutions</h1>
+                <p class="fade-in">Experience the next generation of floor and glass cleaners with NeuTraze's innovative formulas.</p>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary fade-in">Shop Products</a>
+                    <a href="#contact" class="btn btn-secondary fade-in">Contact Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section id="products">
+            <div class="section-header">
+                <h2>Our Products</h2>
+                <p>Discover our range of premium cleaning solutions for home and commercial use.</p>
+            </div>
+
+            <div class="products-grid" id="products-grid">
+                <!-- Products will be loaded dynamically from JSON -->
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="glass-tertiary">
+            <div class="section-header">
+                <h2>About NeuTraze</h2>
+                <p>Learn about our mission to revolutionize cleaning with innovative, eco-friendly solutions.</p>
+            </div>
+
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Story</h3>
+                    <p>NeuTraze was founded with a simple mission: to create cleaning products that are both highly effective and environmentally responsible. Our team of chemists and engineers have developed proprietary formulas that deliver superior cleaning power without harmful chemicals.</p>
+                    <p>We believe that everyone deserves a clean, healthy living environment, and our products are designed to make that easier than ever before.</p>
+                    <a href="#contact" class="btn btn-primary">Get in Touch</a>
+                </div>
+                <div class="about-image glass">
+                    <span>🏢</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+                <p>Have questions or ready to place an order? Get in touch with our team.</p>
+            </div>
+
+            <form class="contact-form glass" id="contact-form">
+                <div class="form-group">
+                    <label for="name" class="form-label">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone" class="form-label">Phone Number (Optional)</label>
+                    <input type="tel" id="phone" name="phone" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label for="product" class="form-label">Product of Interest</label>
+                    <select id="product" name="product" class="form-control">
+                        <option value="">Select a product</option>
+                        <!-- Options will be populated dynamically -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message" class="form-label">Message</label>
+                    <textarea id="message" name="message" class="form-control" required></textarea>
+                </div>
+
+                <div class="form-check">
+                    <input type="checkbox" id="consent" name="consent" class="form-check-input" required>
+                    <label for="consent" class="form-label">I agree to NeuTraze storing my contact information for response purposes.</label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <span id="submit-text">Send Message</span>
+                    <div class="loading" id="submit-loading" style="display: none;"></div>
+                </button>
+
+                <div id="form-message"></div>
+            </form>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>NeuTraze</h3>
+                <p>Premium cleaning solutions for home and commercial use.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><span>📘</span></a>
+                    <a href="#" aria-label="Twitter"><span>🐦</span></a>
+                    <a href="#" aria-label="Instagram"><span>📷</span></a>
+                    <a href="#" aria-label="LinkedIn"><span>💼</span></a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Products</h3>
+                <ul class="footer-links">
+                    <li><a href="#" data-product="neu-fc-001">Floor Cleaner</a></li>
+                    <li><a href="#" data-product="neu-gc-001">Glass Cleaner</a></li>
+                    <li><a href="#products">All Products</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact Info</h3>
+                <ul class="footer-links">
+                    <li>📧 info@neutraze.com</li>
+                    <li>📞 +1 (555) 123-4567</li>
+                    <li>📍 123 Clean Street, Sparkle City</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2023 NeuTraze. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Product Detail Modal -->
+    <div class="modal" id="product-modal">
+        <div class="modal-content glass">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">×</button>
+            <div id="product-detail-content">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div class="modal" id="success-modal">
+        <div class="modal-content glass">
+            <button class="modal-close" id="success-modal-close" aria-label="Close modal">×</button>
+            <div style="text-align: center; padding: 2rem;">
+                <div style="font-size: 4rem; margin-bottom: 1rem;">✅</div>
+                <h2 style="margin-bottom: 1rem;">Thank You!</h2>
+                <p>Your message has been sent successfully. Our team will get back to you shortly.</p>
+                <button class="btn btn-primary" id="success-ok" style="margin-top: 2rem;">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample product data (in a real implementation, this would be loaded from a JSON file)
+        const products = [
+            {
+                "id": "neu-fc-001",
+                "sku": "NEU-FC-001",
+                "title": "NeuTraze Floor Cleaner - Original",
+                "short_description": "Powerful floor cleaner for home and commercial spaces. Cleans grease and leaves a fresh scent.",
+                "long_description": "<p>NeuTraze Floor Cleaner is formulated for deep cleaning of tile, marble and laminate floors. Biodegradable formula, fast-drying.</p><ul><li>Volume: 1L</li><li>Use: Dilute 1:100 for routine cleaning</li></ul>",
+                "price": 299.00,
+                "currency": "INR",
+                "png_url": "https://via.placeholder.com/400x300/3a86ff/ffffff?text=Floor+Cleaner",
+                "photos": [
+                    "https://via.placeholder.com/600x400/3a86ff/ffffff?text=Floor+Cleaner+1",
+                    "https://via.placeholder.com/600x400/3a86ff/ffffff?text=Floor+Cleaner+2"
+                ],
+                "availability": "in_stock",
+                "tags": ["floor", "cleaner"],
+                "recommend": ["neu-gc-001"]
+            },
+            {
+                "id": "neu-gc-001",
+                "sku": "NEU-GC-001",
+                "title": "NeuTraze Glass Cleaner",
+                "short_description": "Streak-free glass cleaner for windows, mirrors and screens.",
+                "long_description": "<p>NeuTraze Glass Cleaner delivers a streak-free shine using a fast-evaporating, non-damaging formula. Safe for screens and coated glass.</p>",
+                "price": 199.00,
+                "currency": "INR",
+                "png_url": "https://via.placeholder.com/400x300/8338ec/ffffff?text=Glass+Cleaner",
+                "photos": [
+                    "https://via.placeholder.com/600x400/8338ec/ffffff?text=Glass+Cleaner+1"
+                ],
+                "availability": "in_stock",
+                "tags": ["glass", "cleaner"],
+                "recommend": ["neu-fc-001"]
+            }
+        ];
+
+        // Theme Management
+        const themeToggle = document.getElementById('theme-toggle');
+        const themes = ['liquid-light', 'liquid-dark', 'vibrant-gradient', 'minimal-clean'];
+        let currentThemeIndex = 0;
+
+        // Initialize theme from localStorage or default to liquid-light
+        function initTheme() {
+            const savedTheme = localStorage.getItem('neutraze-theme');
+            if (savedTheme) {
+                document.body.setAttribute('data-theme', savedTheme);
+                currentThemeIndex = themes.indexOf(savedTheme);
+            } else {
+                document.body.setAttribute('data-theme', 'liquid-light');
+            }
+        }
+
+        // Toggle theme function
+        function toggleTheme() {
+            currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+            const newTheme = themes[currentThemeIndex];
+            document.body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('neutraze-theme', newTheme);
+        }
+
+        // Event listeners for theme toggle
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggle.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Initialize products
+        function initProducts() {
+            const productsGrid = document.getElementById('products-grid');
+            const productSelect = document.getElementById('product');
+            
+            // Clear existing content
+            productsGrid.innerHTML = '';
+            productSelect.innerHTML = '<option value="">Select a product</option>';
+            
+            // Add products to grid and select
+            products.forEach(product => {
+                // Create product card
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card glass fade-in';
+                productCard.innerHTML = `
+                    <img src="${product.png_url}" alt="${product.title}" class="product-image" loading="lazy">
+                    <div class="product-info">
+                        <h3 class="product-title">${product.title}</h3>
+                        <p class="product-description">${product.short_description}</p>
+                        <div class="product-price">${product.currency} ${product.price.toFixed(2)}</div>
+                        <div class="product-actions">
+                            <button class="btn btn-primary view-product" data-id="${product.id}">View Details</button>
+                            <button class="btn btn-secondary enquire-product" data-id="${product.id}">Enquire</button>
+                        </div>
+                    </div>
+                `;
+                productsGrid.appendChild(productCard);
+                
+                // Add option to select
+                const option = document.createElement('option');
+                option.value = product.id;
+                option.textContent = product.title;
+                productSelect.appendChild(option);
+            });
+            
+            // Add event listeners to product buttons
+            document.querySelectorAll('.view-product').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = e.target.getAttribute('data-id');
+                    showProductDetail(productId);
+                });
+            });
+            
+            document.querySelectorAll('.enquire-product').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const productId = e.target.getAttribute('data-id');
+                    document.getElementById('product').value = productId;
+                    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+                });
+            });
+        }
+
+        // Show product detail in modal
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            const modal = document.getElementById('product-modal');
+            const content = document.getElementById('product-detail-content');
+            
+            content.innerHTML = `
+                <div class="product-detail">
+                    <div class="product-gallery glass-secondary">
+                        <img src="${product.png_url}" alt="${product.title}">
+                    </div>
+                    <div class="product-detail-info">
+                        <h1>${product.title}</h1>
+                        <div class="product-detail-price">${product.currency} ${product.price.toFixed(2)}</div>
+                        <div class="product-detail-description">${product.long_description}</div>
+                        
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" id="decrease-qty">-</button>
+                            <span class="quantity-value" id="quantity-value">1</span>
+                            <button class="quantity-btn" id="increase-qty">+</button>
+                        </div>
+                        
+                        <div class="product-actions">
+                            <button class="btn btn-primary" id="add-to-enquiry" style="flex: 2;">Add to Enquiry</button>
+                            <button class="btn btn-secondary" id="copy-details">Copy Details</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners for quantity buttons
+            let quantity = 1;
+            const quantityValue = document.getElementById('quantity-value');
+            const decreaseBtn = document.getElementById('decrease-qty');
+            const increaseBtn = document.getElementById('increase-qty');
+            
+            decreaseBtn.addEventListener('click', () => {
+                if (quantity > 1) {
+                    quantity--;
+                    quantityValue.textContent = quantity;
+                }
+            });
+            
+            increaseBtn.addEventListener('click', () => {
+                quantity++;
+                quantityValue.textContent = quantity;
+            });
+            
+            // Add to enquiry button
+            document.getElementById('add-to-enquiry').addEventListener('click', () => {
+                document.getElementById('product').value = productId;
+                modal.classList.remove('active');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Copy details button
+            document.getElementById('copy-details').addEventListener('click', () => {
+                const details = `${product.title}\n${product.short_description}\nPrice: ${product.currency} ${product.price.toFixed(2)}`;
+                navigator.clipboard.writeText(details).then(() => {
+                    alert('Product details copied to clipboard!');
+                });
+            });
+            
+            modal.classList.add('active');
+        }
+
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        const submitText = document.getElementById('submit-text');
+        const submitLoading = document.getElementById('submit-loading');
+        const formMessage = document.getElementById('form-message');
+
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show loading state
+            submitText.style.display = 'none';
+            submitLoading.style.display = 'inline-block';
+            
+            // In a real implementation, this would send to Formspree
+            // For demo purposes, we'll simulate a successful submission
+            setTimeout(() => {
+                submitText.style.display = 'inline';
+                submitLoading.style.display = 'none';
+                
+                // Show success message
+                document.getElementById('success-modal').classList.add('active');
+                
+                // Reset form
+                contactForm.reset();
+            }, 1500);
+        });
+
+        // Modal controls
+        document.getElementById('modal-close').addEventListener('click', () => {
+            document.getElementById('product-modal').classList.remove('active');
+        });
+        
+        document.getElementById('success-modal-close').addEventListener('click', () => {
+            document.getElementById('success-modal').classList.remove('active');
+        });
+        
+        document.getElementById('success-ok').addEventListener('click', () => {
+            document.getElementById('success-modal').classList.remove('active');
+        });
+
+        // Close modals when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                }
+            });
+        });
+
+        // Animated background for hero section (simplified for this demo)
+        function initHeroBackground() {
+            const heroBg = document.getElementById('hero-background');
+            // In a real implementation, this would use Three.js or similar for WebGL animation
+            // For this demo, we'll use a CSS animation
+            heroBg.style.background = 'linear-gradient(45deg, #3a86ff, #8338ec, #ff006e)';
+            heroBg.style.backgroundSize = '400% 400%';
+            heroBg.style.animation = 'gradientShift 15s ease infinite';
+            
+            // Add the keyframes for the animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes gradientShift {
+                    0% { background-position: 0% 50%; }
+                    50% { background-position: 100% 50%; }
+                    100% { background-position: 0% 50%; }
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // Scroll animations
+        function initScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(el => observer.observe(el));
+        }
+
+        // Footer product links
+        function initFooterLinks() {
+            document.querySelectorAll('.footer-links a[data-product]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const productId = e.target.getAttribute('data-product');
+                    showProductDetail(productId);
+                });
+            });
+        }
+
+        // Initialize everything when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            initProducts();
+            initHeroBackground();
+            initScrollAnimations();
+            initFooterLinks();
+        });
+    </script>
+</body>
+</html>
