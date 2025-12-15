@@ -918,7 +918,14 @@
                 <p>Have questions or ready to place an order? Get in touch with our team.</p>
             </div>
 
-            <form class="contact-form glass" id="contact-form">
+            <form 
+class="contact-form glass"
+  id="contact-form"
+  action="https://api.web3forms.com/submit"
+  method="POST"
+>
+<input type="hidden" name="access_key" value="55daddd4-c926-46ca-9fbf-8f6a0771ff94">
+<input type="hidden" name="redirect" value="https://neutraze-official.vercel.app/?success=true">
                 <div class="form-group">
                     <label for="name" class="form-label">Full Name</label>
                     <input type="text" id="name" name="name" class="form-control" required>
@@ -1234,32 +1241,57 @@
         }
 
         // Form submission
-        const contactForm = document.getElementById('contact-form');
-        const submitText = document.getElementById('submit-text');
-        const submitLoading = document.getElementById('submit-loading');
-        const formMessage = document.getElementById('form-message');
+const contactForm = document.getElementById('contact-form');
+const submitText = document.getElementById('submit-text');
+const submitLoading = document.getElementById('submit-loading');
+const formMessage = document.getElementById('form-message');
 
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            // Show loading state
-            submitText.style.display = 'none';
-            submitLoading.style.display = 'inline-block';
-            
-            // In a real implementation, this would send to Formspree
-            // For demo purposes, we'll simulate a successful submission
-            setTimeout(() => {
-                submitText.style.display = 'inline';
-                submitLoading.style.display = 'none';
-                
-                // Show success message
-                document.getElementById('success-modal').classList.add('active');
-                
-                // Reset form
-                contactForm.reset();
-            }, 1500);
-        });
+/*
+contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    // Show loading state
+    submitText.style.display = 'none';
+    submitLoading.style.display = 'inline-block';
+    
+    // Simulated success (DISABLED)
+    setTimeout(() => {
+        submitText.style.display = 'inline';
+        submitLoading.style.display = 'none';
+        document.getElementById('success-modal').classList.add('active');
+        contactForm.reset();
+    }, 1500);
+});
+*/
+contactForm.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
+  submitText.style.display = "none";
+  submitLoading.style.display = "inline-block";
+
+  const formData = new FormData(contactForm);
+
+  try {
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData
+    });
+
+    const data = await res.json();
+
+    if (data.success) {
+      document.getElementById("success-modal").classList.add("active");
+      contactForm.reset();
+    } else {
+      alert("Form submission failed. Try again.");
+    }
+  } catch (err) {
+    alert("Network error. Try again later.");
+  } finally {
+    submitText.style.display = "inline";
+    submitLoading.style.display = "none";
+  }
+});
         // Modal controls
         document.getElementById('modal-close').addEventListener('click', () => {
             document.getElementById('product-modal').classList.remove('active');
@@ -1337,7 +1369,8 @@
             initScrollAnimations();
             initFooterLinks();
         });
+       
     </script>
 </body>
 
-</html>
+                    </html>
