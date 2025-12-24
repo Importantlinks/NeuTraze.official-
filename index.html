@@ -13,7 +13,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
+
+
+
+
+
+
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer" />
+
+
+
     <style>
         :root {
             /* Brand Colors */
@@ -831,6 +846,244 @@
                 background: rgba(255, 255, 255, 0.95);
             }
         }
+        :root {
+    /* Brand */
+    --primary-color: #3a86ff;
+    --secondary-color: #8338ec;
+    --accent-color: #ff006e;
+
+    /* Light Theme (default) */
+    --bg-primary: rgba(255, 255, 255, 0.7);
+    --bg-secondary: rgba(255, 255, 255, 0.5);
+    --bg-tertiary: rgba(255, 255, 255, 0.3);
+
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a4a4a;
+    --text-tertiary: #6a6a6a;
+
+    --glass-intensity: 10px;
+    --glass-tint: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+[data-theme="liquid-dark"] {
+    --bg-primary: rgba(15, 15, 20, 0.9);
+    --bg-secondary: rgba(25, 25, 30, 0.85);
+    --bg-tertiary: rgba(35, 35, 40, 0.8);
+
+    --text-primary: #ffffff;
+    --text-secondary: #d0d0d0;
+    --text-tertiary: #a0a0a0;
+
+    --glass-intensity: 14px;
+    --glass-tint: rgba(0, 0, 0, 0.45);
+    --shadow-color: rgba(0, 0, 0, 0.6);
+}
+/* Light theme body */
+body {
+    background: linear-gradient(180deg, #f5f7fb, #eef1f7);
+    color: var(--text-primary);
+    transition: background 0.4s ease, color 0.4s ease;
+}
+/* Dark theme body */
+[data-theme="liquid-dark"] body {
+    background: linear-gradient(180deg, #0c0f14, #141824);
+}
+section,
+footer,
+.card {
+    background: var(--bg-secondary);
+    backdrop-filter: blur(var(--glass-intensity));
+    -webkit-backdrop-filter: blur(var(--glass-intensity));
+    color: var(--text-primary);
+}
+/* ===== MOBILE NAV FIX ===== */
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: var(--bg-primary);
+        backdrop-filter: blur(var(--glass-intensity));
+        border-radius: 16px;
+        padding: 1rem;
+        display: none;
+        gap: 1rem;
+        z-index: 999;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+        padding: 0.75rem;
+    }
+}
+
+.theme-toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* default: light */
+.icon-moon {
+    display: inline;
+}
+.icon-sun {
+    display: none;
+}
+
+/* dark theme */
+[data-theme="liquid-dark"] .icon-sun {
+    display: inline;
+}
+[data-theme="liquid-dark"] .icon-moon {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+
+        background: var(--bg-primary);
+        backdrop-filter: blur(var(--glass-intensity));
+        -webkit-backdrop-filter: blur(var(--glass-intensity));
+
+        border-radius: 16px;
+        padding: 1rem;
+        gap: 1rem;
+
+        display: none;
+        z-index: 999;
+        box-shadow: 0 12px 30px var(--shadow-color);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}
+
+/* ===== DESKTOP NAV (DEFAULT) ===== */
+.nav-links {
+    display: flex;              /* 👈 always show on PC */
+    gap: 2rem;
+    list-style: none;
+    align-items: center;
+
+    position: static;
+    flex-direction: row;
+    background: none;
+    backdrop-filter: none;
+    padding: 0;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+
+    .nav-links {
+        display: none;           /* 👈 on Mobile hide */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+
+        flex-direction: column;
+        align-items: center;
+
+        background: var(--bg-primary);
+        backdrop-filter: blur(var(--glass-intensity));
+        -webkit-backdrop-filter: blur(var(--glass-intensity));
+
+        border-radius: 16px;
+        padding: 1rem;
+        gap: 1rem;
+        z-index: 999;
+        box-shadow: 0 12px 30px var(--shadow-color);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    /* ☰ button at only mobile */
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+
+
+
+
+
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.social {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+    font-size: 1.1rem;
+    color: #fff;
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Facebook */
+.social.facebook {
+    background: #1877f2;
+}
+
+/* Twitter / X */
+.social.twitter {
+    background: #000;
+}
+
+/* LinkedIn */
+.social.linkedin {
+    background: #0a66c2;
+}
+
+/* Instagram gradient */
+.social.instagram {
+    background: radial-gradient(circle at 30% 107%,
+        #fdf497 0%, #fdf497 5%,
+        #fd5949 45%,
+        #d6249f 60%,
+        #285AEB 90%);
+}
+
+/* Hover effect */
+.social:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+
     </style>
 </head>
 <body>
@@ -852,15 +1105,14 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
 
-            <div class="nav-actions">
-                <div class="theme-toggle" id="theme-toggle" role="button" aria-label="Toggle theme" tabindex="0">
-                    <div class="theme-toggle-icons">
-                        <span>☀️</span>
-                        <span>🌙</span>
-                    </div>
-                </div>
-                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">☰</button>
-            </div>
+           <div class="nav-actions">
+    <div class="theme-toggle" id="theme-toggle" role="button" tabindex="0">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+    </div>
+    <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+</div>
+
         </nav>
     </header>
 
@@ -924,7 +1176,7 @@ class="contact-form glass"
   action="https://api.web3forms.com/submit"
   method="POST"
 >
-<input type="hidden" name="access_key" value="55daddd4-c926-46ca-9fbf-8f6a0771ff94">
+<input type="hidden" name="access_key" value="7f27c1f6-0fb9-45a4-bbe2-b14733aafd6c">
 <input type="hidden" name="redirect" value="https://neutraze-official.vercel.app/?success=true">
                 <div class="form-group">
                     <label for="name" class="form-label">Full Name</label>
@@ -937,7 +1189,7 @@ class="contact-form glass"
                 </div>
 
                 <div class="form-group">
-                    <label for="phone" class="form-label">Phone Number (Optional)</label>
+                    <label for="phone" class="form-label">Phone Number</label>
                     <input type="tel" id="phone" name="phone" class="form-control">
                 </div>
 
@@ -971,19 +1223,32 @@ class="contact-form glass"
 
     <!-- Footer -->
     <footer>
-        <div class="footer-content">
+         <div class="footer-content">
             <div class="footer-column">
                 <h3>NeuTraze</h3>
                 <p>Premium cleaning solutions for home and commercial use.</p>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><span>📘</span></a>
-                    <a href="#" aria-label="Twitter"><span>🐦</span></a>
-                    <a href="#" aria-label="Instagram"><span>📷</span></a>
-                    <a href="#" aria-label="LinkedIn"><span>💼</span></a>
-                </div>
-            </div>
+        <div class="social-links">
+     <a href="https://www.instagram.com/neutraze2025?" class="social instagram" target="_blank">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.facebook.com" class="social facebook" target="_blank">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+    <a href="https://twitter.com" class="social twitter" target="_blank">
+        <i class="fab fa-x-twitter"></i>
+    </a>
+
+    <a href="https://www.linkedin.com" class="social linkedin" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+   
+</div>
+
 
             <div class="footer-column">
+                <h3></h3>
                 <h3>Quick Links</h3>
                 <ul class="footer-links">
                     <li><a href="#home">Home</a></li>
@@ -1005,10 +1270,12 @@ class="contact-form glass"
             <div class="footer-column">
                 <h3>Contact Info</h3>
                 <ul class="footer-links">
-                    <li>📧 info@neutraze.com</li>
+                    <li>📧 neutraze2025@gmail.com</li>
                     <li>📞 +91 99985 50703 </li>
                     <li>📞 +91 70160 32768 </li>
-                    <li>📍 123 Clean Street, Sparkle City</li>
+                
+
+                    <li>KUNAL FUCK YOU</li>
                 </ul>
             </div>
         </div>
@@ -1043,41 +1310,54 @@ class="contact-form glass"
 
     <script>
         // Sample product data (in a real implementation, this would be loaded from a JSON file)
-        const products = [
-            {
-                "id": "neu-fc-001",
-                "sku": "NEU-FC-001",
-                "title": "NeuTraze Floor Cleaner - Original",
-                "short_description": "Powerful floor cleaner for home and commercial spaces. Cleans grease and leaves a fresh scent.",
-                "long_description": "<p>NeuTraze Floor Cleaner is formulated for deep cleaning of tile, marble and laminate floors. Biodegradable formula, fast-drying.</p><ul><li>Volume: 1L</li><li>Use: Dilute 1:100 for routine cleaning</li></ul>",
-                "price": 299.00,
-                "currency": "INR",
-                "png_url": "https://via.placeholder.com/400x300/3a86ff/ffffff?text=Floor+Cleaner",
-                "photos": [
-                    "https://via.placeholder.com/600x400/3a86ff/ffffff?text=Floor+Cleaner+1",
-                    "https://via.placeholder.com/600x400/3a86ff/ffffff?text=Floor+Cleaner+2"
-                ],
-                "availability": "in_stock",
-                "tags": ["floor", "cleaner"],
-                "recommend": ["neu-gc-001"]
-            },
-            {
-                "id": "neu-gc-001",
-                "sku": "NEU-GC-001",
-                "title": "NeuTraze Glass Cleaner",
-                "short_description": "Streak-free glass cleaner for windows, mirrors and screens.",
-                "long_description": "<p>NeuTraze Glass Cleaner delivers a streak-free shine using a fast-evaporating, non-damaging formula. Safe for screens and coated glass.</p>",
-                "price": 199.00,
-                "currency": "INR",
-                "png_url": "https://via.placeholder.com/400x300/8338ec/ffffff?text=Glass+Cleaner",
-                "photos": [
-                    "https://via.placeholder.com/600x400/8338ec/ffffff?text=Glass+Cleaner+1"
-                ],
-                "availability": "in_stock",
-                "tags": ["glass", "cleaner"],
-                "recommend": ["neu-fc-001"]
-            }
-        ];
+      const products = [
+  {
+    id: "neu-fc-001",
+    sku: "NEU-FC-001",
+    title: "NeuTraze Floor Cleaner - Original",
+    short_description: "Powerful floor cleaner for home and commercial spaces.",
+    long_description: "<p>NeuTraze Floor Cleaner is formulated for deep cleaning.</p>",
+    
+    price: 299,
+    mrp: 1999,
+    currency: "INR",
+
+    rating: 3.4,
+    rating_count: 203,
+
+    png_url: "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1",
+    photos: [
+      "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1"
+    ],
+
+    availability: "in_stock",
+    tags: ["floor", "cleaner"],
+    recommend: ["neu-gc-001"]
+  },
+
+  {
+    id: "neu-gc-001",
+    sku: "NEU-GC-001",
+    title: "NeuTraze Glass Cleaner",
+    short_description: "Streak-free glass cleaner for windows and mirrors.",
+    
+    price: 199,
+    mrp: 999,
+    currency: "INR",
+
+    rating: 4.1,
+    rating_count: 87,
+
+    png_url: "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1",
+    photos: [
+      "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1"
+    ],
+
+    availability: "in_stock",
+    tags: ["glass", "cleaner"],
+    recommend: ["neu-fc-001"]
+  }
+];
 
         // Theme Management
         const themeToggle = document.getElementById('theme-toggle');
@@ -1360,8 +1640,7 @@ contactForm.addEventListener("submit", async (e) => {
                 });
             });
         }
-
-        // Initialize everything when DOM is loaded
+// Initialize everything when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             initTheme();
             initProducts();
@@ -1369,8 +1648,30 @@ contactForm.addEventListener("submit", async (e) => {
             initScrollAnimations();
             initFooterLinks();
         });
-       
+        
+document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.getElementById("theme-toggle");
+
+    const themes = ["liquid-light", "liquid-dark"];
+    let index = 0;
+
+    const saved = localStorage.getItem("theme");
+    if (saved && themes.includes(saved)) {
+        index = themes.indexOf(saved);
+    }
+
+    document.body.setAttribute("data-theme", themes[index]);
+
+    toggle.addEventListener("click", () => {
+        index = index === 0 ? 1 : 0;
+        const theme = themes[index];
+        document.body.setAttribute("data-theme", theme);
+        localStorage.setItem("theme", theme);
+    });
+});
+
+
     </script>
 </body>
 
-                    </html>
+</html>
