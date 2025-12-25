@@ -20,9 +20,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer" />
 
-
-
-    <style>
+        <style>
         :root {
             /* Brand Colors */
             --primary-color: #3a86ff;
@@ -526,7 +524,7 @@
         }
 
         /* Footer */
-        footer {
+         footer {
             padding: 3rem 2rem 1.5rem;
             border-top: 1px solid var(--glass-tint);
         }
@@ -536,7 +534,7 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            /* gap: 2rem; */
         }
 
         .footer-column h3 {
@@ -596,7 +594,6 @@
             color: var(--text-tertiary);
             font-size: 0.875rem;
         }
-
         /* Modal */
         .modal {
             position: fixed;
@@ -1021,12 +1018,6 @@ footer,
     }
 }
 
-
-
-
-
-
-
 .social-links {
     display: flex;
     gap: 1rem;
@@ -1216,62 +1207,61 @@ class="contact-form glass"
 
     <!-- Footer -->
     <footer>
-         <div class="footer-content">
-            <div class="footer-column">
-                <h3>NeuTraze</h3>
-                <p>Premium cleaning solutions for home and commercial use.</p>
-        <div class="social-links">
-     <a href="https://www.instagram.com/neutraze2025?" class="social instagram" target="_blank">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.facebook.com" class="social facebook" target="_blank">
-        <i class="fab fa-facebook-f"></i>
-    </a>
+    <div class="footer-content">
+         <div class="footer-column">
+            <h3>NeuTraze</h3>
+            <p>Premium cleaning solutions for home <br> and commercial use.</p>
 
-    <a href="https://twitter.com" class="social twitter" target="_blank">
-        <i class="fab fa-x-twitter"></i>
-    </a>
-
-    <a href="https://www.linkedin.com" class="social linkedin" target="_blank">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-
-   
-</div>
-
-
-            <div class="footer-column">
-                <h3></h3>
-                <h3>Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#products">Products</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Products</h3>
-                <ul class="footer-links">
-                    <li><a href="#" data-product="neu-fc-001">Floor Cleaner</a></li>
-                    <li><a href="#" data-product="neu-gc-001">Glass Cleaner</a></li>
-                    <li><a href="#products">All Products</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Contact Info</h3>
-                <ul class="footer-links">
-                    <li>📧 neutraze2025@gmail.com</li>
-                    <li>📞 +91 99985 50703 </li>
-                    <li>📞 +91 70160 32768 </li>
-                 </ul>
+            <div class="social-links">
+                <a href="https://www.instagram.com/neutraze2025?" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com" target="_blank">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com" target="_blank">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
             </div>
         </div>
 
-        <div class="footer-bottom">
-            <p>&copy; 2025 NeuTraze. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        <!-- Column 2 -->
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-column">
+            <h3>Products</h3>
+            <ul class="footer-links">
+                <li><a href="#" data-product="neu-fc-001">Floor Cleaner</a></li>
+                <li><a href="#" data-product="neu-gc-001">Glass Cleaner</a></li>
+                <li><a href="#products">All Products</a></li>
+            </ul>
+        </div>
+
+        <!-- Column 4 -->
+        <div class="footer-column">
+            <h3>Contact Info</h3>
+            <ul class="footer-links">
+                <li>📧 neutraze2025@gmail.com</li>
+                <li>📞 +91 99985 50703</li>
+                <li>📞 +91 70160 32768</li>
+            </ul>
+        </div>
+
+    </div>
+            <div class="footer-bottom">
+            &copy; 2025 NeuTraze. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
         </div>
     </footer>
 
@@ -1308,7 +1298,7 @@ class="contact-form glass"
     short_description: "Powerful floor cleaner for home and commercial spaces.",
     long_description: "<p>NeuTraze Floor Cleaner is formulated for deep cleaning.</p>",
     
-    price: 299,
+    price: 100,
     mrp: 1999,
     currency: "INR",
 
@@ -1391,7 +1381,6 @@ themeToggle.addEventListener('keydown', (e) => {
     }
 });
 
-
         // Toggle theme function
     
         // Event listeners for theme toggle
@@ -1425,18 +1414,60 @@ themeToggle.addEventListener('keydown', (e) => {
                 // Create product card
                 const productCard = document.createElement('div');
                 productCard.className = 'product-card glass fade-in';
-                productCard.innerHTML = `
-                    <img src="${product.png_url}" alt="${product.title}" class="product-image" loading="lazy">
-                    <div class="product-info">
-                        <h3 class="product-title">${product.title}</h3>
-                        <p class="product-description">${product.short_description}</p>
-                        <div class="product-price">${product.currency} ${product.price.toFixed(2)}</div>
-                        <div class="product-actions">
-                            <button class="btn btn-primary view-product" data-id="${product.id}">View Details</button>
-                            <button class="btn btn-secondary enquire-product" data-id="${product.id}">Enquire</button>
-                        </div>
-                    </div>
-                `;
+               const discount =
+  product.price > 0 && product.mrp > product.price
+    ? Math.round(((product.mrp - product.price) / product.mrp) * 100)
+    : null;
+
+const stars = product.rating
+  ? "★".repeat(Math.round(product.rating)) +
+    "☆".repeat(5 - Math.round(product.rating))
+  : "";
+
+productCard.innerHTML = `
+  <img src="${product.png_url}" alt="${product.title}" class="product-image" loading="lazy">
+
+  <div class="product-info">
+    <h3 class="product-title">${product.title}</h3>
+
+    ${
+      product.rating
+        ? `<div style="margin-bottom:6px; font-size:14px; color:#f5a623;">
+             ${stars}
+             <span style="color:#888; font-size:13px;">
+               (${product.rating_count})
+             </span>
+           </div>`
+        : ""
+    }
+
+    <p class="product-description">${product.short_description}</p>
+
+    <div class="product-price">
+      ₹${product.price.toFixed(2)}
+      ${
+        discount
+          ? `<span style="text-decoration:line-through; font-size:14px; color:#999; margin-left:6px;">
+               ₹${product.mrp}
+             </span>
+             <span style="color:#06d6a0; font-size:14px; margin-left:6px;">
+               ${discount}% OFF
+             </span>`
+          : ""
+      }
+    </div>
+
+    <div class="product-actions">
+      <button class="btn btn-primary view-product" data-id="${product.id}">
+        View Details
+      </button>
+      <button class="btn btn-secondary enquire-product" data-id="${product.id}">
+        Enquire
+      </button>
+    </div>
+  </div>
+`;
+
                 productsGrid.appendChild(productCard);
                 
                 // Add option to select
@@ -1478,7 +1509,28 @@ themeToggle.addEventListener('keydown', (e) => {
                     </div>
                     <div class="product-detail-info">
                         <h1>${product.title}</h1>
-                        <div class="product-detail-price">${product.currency} ${product.price.toFixed(2)}</div>
+                        <div class="product-detail-price">
+  ₹${product.price.toFixed(2)}
+  ${
+    product.mrp > product.price && product.price > 0
+      ? `<span style="text-decoration:line-through; font-size:14px; color:#999; margin-left:8px;">
+           ₹${product.mrp}
+         </span>`
+      : ""
+  }
+</div>
+
+${
+  product.rating
+    ? `<div style="margin-bottom:12px; color:#f5a623;">
+         ${"★".repeat(Math.round(product.rating))}
+         ${"☆".repeat(5 - Math.round(product.rating))}
+         <span style="color:#aaa; font-size:14px;">
+           (${product.rating_count})
+         </span>
+       </div>`
+    : ""
+}
                         <div class="product-detail-description">${product.long_description}</div>
                         
                         <div class="quantity-selector">
@@ -1662,5 +1714,4 @@ contactForm.addEventListener("submit", async (e) => {
         
     </script>
 </body>
-
 </html>
