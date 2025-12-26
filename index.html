@@ -385,45 +385,43 @@
             margin-top: 2rem;
         }
 
-        .product-card {
-            border-radius: 16px;
-            padding: 1.5rem;
+       .product-card {
+            background-color: var(--card-bg);
+            border-radius: var(--card-radius, 16px);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
         }
 
         .product-image {
             width: 100%;
             height: 200px;
-            object-fit: contain;
-            margin-bottom: 1rem;
-            border-radius: 12px;
-            background: var(--bg-tertiary);
-            padding: 1rem;
+            object-fit: cover;
         }
 
         .product-info {
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            padding: 20px;
         }
 
         .product-title {
-            font-size: 1.25rem;
+            font-size: 18px;
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 10px;
         }
 
         .product-description {
             color: var(--text-secondary);
-            margin-bottom: 1rem;
-            flex-grow: 1;
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .product-price {
@@ -657,9 +655,10 @@
         }
 
         .product-gallery img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
+        
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
         }
 
         .product-detail-info h1 {
@@ -1305,7 +1304,7 @@ class="contact-form glass"
     rating: 3.4,
     rating_count: 203,
 
-    png_url: "https://www.dropbox.com/scl/fi/b8ylcl1e4mzq051gk7ci3/Gemini_Generated_Image_gpi5vbgpi5vbgpi5.png?rlkey=lgugf8504g7gn40gfc0xtddvb&st=ki6de993&raw=1",
+    png_url: "https://www.dropbox.com/scl/fi/d8qmxgyfqo69e1p1n906v/Gemini_Generated_Image_bwj870bwj870bwj8.png?rlkey=cjjqozzrdsihgb8emrme27otr&st=965lyju8&raw=1",
     photos: [
       "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1"
     ],
@@ -1328,7 +1327,7 @@ class="contact-form glass"
     rating: 4.1,
     rating_count: 87,
 
-    png_url: "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1",
+    png_url: "https://www.dropbox.com/scl/fi/aydbawgty0azt3x3psri8/Gemini_Generated_Image_qc505rqc505rqc50.png?rlkey=566tolt9q9t96kv8wsbcg1u7s&st=q0rrqvn6&raw=1",
     photos: [
       "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1"
     ],
@@ -1351,7 +1350,7 @@ class="contact-form glass"
     rating: 3.0,
     rating_count: 69,
 
-    png_url: "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1",
+    png_url: "https://www.dropbox.com/scl/fi/8owfqj1vvmvd456mmzlry/Gemini_Generated_Image_m657hdm657hdm657.png?rlkey=rc603sn5e8k0hi7pc8c74h1u0&st=wisf86r1&raw=1",
     photos: [
       "https://www.dropbox.com/scl/fi/ghtd6o0q64pn3uqzidoik/Gemini_Generated_Image_rmfay7rmfay7rmfa.png?raw=1"
     ],
